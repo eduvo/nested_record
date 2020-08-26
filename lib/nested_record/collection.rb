@@ -22,7 +22,7 @@ class NestedRecord::Collection
   def each(&block)
     return to_enum(:each) unless block_given?
 
-    @ary.each(block)
+    @ary.each(&block)
   end
 
   def to_ary
@@ -72,21 +72,21 @@ class NestedRecord::Collection
   def select!(&block)
     return to_enum(:select!) unless block_given?
 
-    @ary.select!(block)
+    @ary.select!(&block)
     self
   end
 
   def reject!(&block)
     return to_enum(:reject!) unless block_given?
 
-    @ary.reject!(block)
+    @ary.reject!(&block)
     self
   end
 
   def sort_by!(&block)
     return to_enum(:sort_by!) unless block_given?
 
-    @ary.sort_by!(block)
+    @ary.sort_by!(&block)
     self
   end
 

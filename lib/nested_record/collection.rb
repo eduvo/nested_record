@@ -19,9 +19,10 @@ class NestedRecord::Collection
     @ary.as_json
   end
 
-  def each
+  def each(&block)
     return to_enum(:each) unless block_given?
-    @ary.each(&proc)
+
+    @ary.each(block)
   end
 
   def to_ary
@@ -68,21 +69,24 @@ class NestedRecord::Collection
     @ary.size
   end
 
-  def select!
+  def select!(&block)
     return to_enum(:select!) unless block_given?
-    @ary.select!(&proc)
+
+    @ary.select!(block)
     self
   end
 
-  def reject!
+  def reject!(&block)
     return to_enum(:reject!) unless block_given?
-    @ary.reject!(&proc)
+
+    @ary.reject!(block)
     self
   end
 
-  def sort_by!
+  def sort_by!(&block)
     return to_enum(:sort_by!) unless block_given?
-    @ary.sort_by!(&proc)
+
+    @ary.sort_by!(block)
     self
   end
 
